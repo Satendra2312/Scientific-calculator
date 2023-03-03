@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="cal.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="p-0 m-0 d-flex justify-content-center align-items-center bg-light">
+    <div class="container col-6 p-4 rounded ">
+        <div class="display">
+            <input class="screen col-12 text-end pe-2 " type="text" placeholder="0">
+        </div>
+        <div class="d-flex col-12 mt-4 justify-content-center align-items-center flex-column">
+            <div class="column">
+                <button type="button" class="btn" onclick="backspc()" id="back">CE</button>
+                <button type="button" class="btn" onclick="fact()">*!</button>
+                <button type="button" class="btn but">(</button>
+                <button type="button" class="btn but">)</button>
+                <button type="button" class="btn but">%</button>
+                <button type="button" class="btn" onclick="screen.value=''" id="ac">AC</button>
+            </div>
+            <div class="column">
+                <button type="button" class="btn" onclick="sin()">sin</button>
+                <button type="button" class="btn" onclick="pi()">π</button>
+                <button type="button" class="btn but">7</button>
+                <button type="button" class="btn but">8</button>
+                <button type="button" class="btn but">9</button>
+                <button type="button" class="btn but">/</button>
+            </div>
+            <div class="column">
+                <button type="button" class="btn" onclick="cos()">cos</button>
+                <button type="button" class="btn" onclick="log()">log</button>
+                <button type="button" class="btn but">4</button>
+                <button type="button" class="btn but">5</button>
+                <button type="button" class="btn but">6</button>
+                <button type="button" class="btn but">*</button>
+            </div>
+            <div class="column">
+                <button type="button" class="btn" onclick="tan()">tan</button>
+                <button type="button" class="btn" onclick="sqrt()">√</button>
+                <button type="button" class="btn but">1</button>
+                <button type="button" class="btn but">2</button>
+                <button type="button" class="btn but">3</button>
+                <button type="button" class="btn but">-</button>
+            </div>
+            <div class="column">
+                <button type="button" class="btn" onclick="e()">e</button>
+                <button type="button" class="btn" onclick="pow()">x<span class="position-relative  right-2"
+                        style="bottom:20%;">y</span></button>
+                <button type="button" class="btn but">0</button>
+                <button type="button" class="btn but">.</button>
+                <button type="button" class="btn" onclick="screen.value=eval(screen.value)" id="equal">=</button>
+                <button type="button" class="btn but">+</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var screen = document.querySelector('.screen');
+        var but = document.querySelectorAll('.but');
+
+        for (item of but) {
+            item.addEventListener('click', (e) => {
+                buttext = e.target.innerText;
+                screen.value += buttext;
+            });
+        }
+        function sin() {
+            screen.value = Math.sin(screen.value);
+        } function cos() {
+            screen.value = Math.cos(screen.value);
+        } function tan() {
+            screen.value = Math.tan(screen.value);
+        } function pow() {
+            screen.value = Math.pow(screen.value,2);
+        } function sqrt() {
+            screen.value = Math.sqrt(screen.value);
+        } function log() {
+            screen.value = Math.log(screen.value);
+        } function pi() {
+            screen.value = 3.14159265359;
+        } function e() {
+            screen.value = 2.71828182846;
+        } function fact() {
+            var i, num,f;
+            f=1
+            num=screen.value;
+            for(i=1; i<=num; i++){
+                f=f*1;
+            }i=i-1;
+            screen.value=f;
+        }function backspc(){
+            screen.value=screen.value.substr(0,screen.value.length-1);
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>
